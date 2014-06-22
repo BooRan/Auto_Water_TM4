@@ -1,0 +1,320 @@
+******************************************************************************
+                  TI ARM Linker PC v5.1.1                      
+******************************************************************************
+>> Linked Thu Feb 27 21:57:03 2014
+
+OUTPUT FILE NAME:   <grad_Motor_TM4.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000bf1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000010c9  0003ef37  R  X
+  SRAM                  20000000   00008000  0000083c  000077c4  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000010d0   000010d0    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000cba   00000cba    r-x .text
+  00000f28    00000f28    00000163   00000163    r-- .const
+  00001090    00001090    00000040   00000040    r-- .cinit
+20000000    20000000    0000083c   00000000    rw-
+  20000000    20000000    00000800   00000000    rw- .stack
+  20000800    20000800    0000003c   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.text      0    0000026c    00000cba     
+                  0000026c    00000478     main.obj (.text)
+                  000006e4    00000104     driverlib.lib : sysctl.obj (.text:SysCtlClockSet)
+                  000007e8    000000c4                   : sysctl.obj (.text:SysCtlClockGet)
+                  000008ac    000000b8                   : gpio.obj (.text:GPIOPadConfigSet)
+                  00000964    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00000a00    00000094                                   : auto_init.obj (.text)
+                  00000a94    00000060     driverlib.lib : interrupt.obj (.text:IntEnable)
+                  00000af4    0000005e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text)
+                  00000b52    00000056     driverlib.lib : gpio.obj (.text:GPIOIntTypeSet)
+                  00000ba8    00000048                   : gpio.obj (.text:GPIOPinConfigure)
+                  00000bf0    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00000c38    00000044                                   : cpy_tbl.obj (.text)
+                  00000c7c    00000044                                   : exit.obj (.text)
+                  00000cc0    00000040     driverlib.lib : uart.obj (.text:UARTConfigSetExpClk)
+                  00000d00    00000034                   : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00000d34    0000002a                   : gpio.obj (.text:GPIODirModeSet)
+                  00000d5e    00000002     --HOLE-- [fill = 0]
+                  00000d60    00000028                   : timer.obj (.text:TimerConfigure)
+                  00000d88    0000001c                   : uart.obj (.text:UARTDisable)
+                  00000da4    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000dbc    00000014     driverlib.lib : systick.obj (.text:SysTickDisable)
+                  00000dd0    00000014                   : systick.obj (.text:SysTickEnable)
+                  00000de4    00000014                   : uart.obj (.text:UARTEnable)
+                  00000df8    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  00000e0c    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  00000e1e    00000012                   : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  00000e30    00000012                   : gpio.obj (.text:GPIOPinTypeQEI)
+                  00000e42    00000012                   : gpio.obj (.text:GPIOPinTypeUART)
+                  00000e54    00000012                   : timer.obj (.text:TimerLoadSet)
+                  00000e66    00000010                   : qei.obj (.text:QEIVelocityConfigure)
+                  00000e76    0000000e                   : qei.obj (.text:QEIConfigure)
+                  00000e84    0000000e                   : timer.obj (.text:TimerEnable)
+                  00000e92    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00000ea0    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsie)
+                  00000eac    0000000c                   : gpio.obj (.text:GPIOIntEnable)
+                  00000eb8    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000ec4    0000000a     driverlib.lib : interrupt.obj (.text:IntMasterEnable)
+                  00000ece    0000000a                   : qei.obj (.text:QEIDisable)
+                  00000ed8    0000000a                   : qei.obj (.text:QEIEnable)
+                  00000ee2    0000000a                   : qei.obj (.text:QEIVelocityEnable)
+                  00000eec    0000000a                   : uart.obj (.text:UARTCharPut)
+                  00000ef6    00000008                   : qei.obj (.text:QEIIntEnable)
+                  00000efe    00000008                   : timer.obj (.text:TimerIntEnable)
+                  00000f06    00000006                   : gpio.obj (.text:GPIOIntClear)
+                  00000f0c    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  00000f12    00000006                   : sysctl.obj (.text:SysCtlDelay)
+                  00000f18    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000f1e    00000004     driverlib.lib : qei.obj (.text:QEIVelocityGet)
+                  00000f22    00000004                   : timer.obj (.text:TimerIntClear)
+
+.const     0    00000f28    00000163     
+                  00000f28    00000078     driverlib.lib : gpio.obj (.const:g_pui32GPIOBaseAddrs)
+                  00000fa0    00000070                   : interrupt.obj (.const)
+                  00001010    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  0000107c    0000000f     main.obj (.const:.string)
+
+.cinit     0    00001090    00000040     
+                  00001090    0000002e     (.cinit..data.load) [load image, compression = rle]
+                  000010be    00000002     --HOLE-- [fill = 0]
+                  000010c0    00000008     (__TI_handler_table)
+                  000010c8    00000008     (__TI_cinit_table)
+
+.stack     0    20000000    00000800     UNINITIALIZED
+                  20000000    00000800     --HOLE--
+
+.data      0    20000800    0000003c     UNINITIALIZED
+                  20000800    00000028     main.obj (.data)
+                  20000828    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000830    00000008                                   : exit.obj (.data)
+                  20000838    00000004                                   : stkdepth_vars.obj (.data)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000010c8 records: 1, size/record: 8, table size: 8
+	.data: load addr=00001090, load size=0000002e bytes, run addr=20000800, run size=0000003c bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000010c0 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+00000c7d   C$$EXIT
+00000ea1   CPUcpsie
+00000d35   GPIODirModeSet
+00000f07   GPIOIntClear
+00000ead   GPIOIntEnable
+00000b53   GPIOIntTypeSet
+000008ad   GPIOPadConfigSet
+00000ba9   GPIOPinConfigure
+00000e0d   GPIOPinTypeGPIOInput
+00000e1f   GPIOPinTypeGPIOOutput
+00000e31   GPIOPinTypeQEI
+00000e43   GPIOPinTypeUART
+00000f0d   GPIOPinWrite
+00000a95   IntEnable
+00000ec5   IntMasterEnable
+00000599   MotorStepIntHandler
+00000e77   QEIConfigure
+00000ecf   QEIDisable
+00000ed9   QEIEnable
+00000ef7   QEIIntEnable
+00000e67   QEIVelocityConfigure
+00000ee3   QEIVelocityEnable
+00000f1f   QEIVelocityGet
+2000080c   RUNDELAY
+00000eb9   ResetISR
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+000007e9   SysCtlClockGet
+000006e5   SysCtlClockSet
+00000f13   SysCtlDelay
+00000d01   SysCtlPeripheralEnable
+00000dbd   SysTickDisable
+00000dd1   SysTickEnable
+00000d61   TimerConfigure
+00000e85   TimerEnable
+00000f23   TimerIntClear
+00000eff   TimerIntEnable
+00000e55   TimerLoadSet
+00000eed   UARTCharPut
+00000cc1   UARTConfigSetExpClk
+00000d89   UARTDisable
+00000de5   UARTEnable
+20000800   __STACK_END
+00000800   __STACK_SIZE
+20000200   __STACK_TOP
+000010c8   __TI_CINIT_Base
+000010d0   __TI_CINIT_Limit
+000010c0   __TI_Handler_Table_Base
+000010c8   __TI_Handler_Table_Limit
+00000001   __TI_args_main
+00000a01   __TI_auto_init
+20000830   __TI_cleanup_ptr
+00000e93   __TI_decompress_none
+00000f19   __TI_decompress_rle24
+20000834   __TI_dtors_ptr
+00000000   __TI_static_base__
+00000965   __aeabi_memcpy
+00000965   __aeabi_memcpy4
+00000965   __aeabi_memcpy8
+ffffffff   __binit__
+ffffffff   __c_args__
+20000000   __stack
+00000da5   _args_main
+00000bf1   _c_int00
+20000828   _lock
+00000e07   _nop
+00000dff   _register_lock
+00000df9   _register_unlock
+2000082c   _unlock
+00000c81   abort
+ffffffff   binit
+00000639   btn_IntHandler
+00000c39   copy_in
+20000808   currentDelay
+20000800   currentMotorSpeed
+00000c89   exit
+00000000   g_pfnVectors
+0000042d   init
+0000043d   init_LED
+00000453   init_interrupt
+0000048f   init_motor
+20000814   intToChar
+000003e7   main
+20000838   main_func_sp
+00000965   memcpy
+20000824   motorVelocity
+20000804   returnedValue
+20000810   running
+00000675   sleep
+2000081e   valChar
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __TI_static_base__
+00000000   g_pfnVectors
+00000001   __TI_args_main
+000003e7   main
+0000042d   init
+0000043d   init_LED
+00000453   init_interrupt
+0000048f   init_motor
+00000599   MotorStepIntHandler
+00000639   btn_IntHandler
+00000675   sleep
+000006e5   SysCtlClockSet
+000007e9   SysCtlClockGet
+00000800   __STACK_SIZE
+000008ad   GPIOPadConfigSet
+00000965   __aeabi_memcpy
+00000965   __aeabi_memcpy4
+00000965   __aeabi_memcpy8
+00000965   memcpy
+00000a01   __TI_auto_init
+00000a95   IntEnable
+00000b53   GPIOIntTypeSet
+00000ba9   GPIOPinConfigure
+00000bf1   _c_int00
+00000c39   copy_in
+00000c7d   C$$EXIT
+00000c81   abort
+00000c89   exit
+00000cc1   UARTConfigSetExpClk
+00000d01   SysCtlPeripheralEnable
+00000d35   GPIODirModeSet
+00000d61   TimerConfigure
+00000d89   UARTDisable
+00000da5   _args_main
+00000dbd   SysTickDisable
+00000dd1   SysTickEnable
+00000de5   UARTEnable
+00000df9   _register_unlock
+00000dff   _register_lock
+00000e07   _nop
+00000e0d   GPIOPinTypeGPIOInput
+00000e1f   GPIOPinTypeGPIOOutput
+00000e31   GPIOPinTypeQEI
+00000e43   GPIOPinTypeUART
+00000e55   TimerLoadSet
+00000e67   QEIVelocityConfigure
+00000e77   QEIConfigure
+00000e85   TimerEnable
+00000e93   __TI_decompress_none
+00000ea1   CPUcpsie
+00000ead   GPIOIntEnable
+00000eb9   ResetISR
+00000ec5   IntMasterEnable
+00000ecf   QEIDisable
+00000ed9   QEIEnable
+00000ee3   QEIVelocityEnable
+00000eed   UARTCharPut
+00000ef7   QEIIntEnable
+00000eff   TimerIntEnable
+00000f07   GPIOIntClear
+00000f0d   GPIOPinWrite
+00000f13   SysCtlDelay
+00000f19   __TI_decompress_rle24
+00000f1f   QEIVelocityGet
+00000f23   TimerIntClear
+000010c0   __TI_Handler_Table_Base
+000010c8   __TI_CINIT_Base
+000010c8   __TI_Handler_Table_Limit
+000010d0   __TI_CINIT_Limit
+20000000   __stack
+20000200   __STACK_TOP
+20000800   __STACK_END
+20000800   currentMotorSpeed
+20000804   returnedValue
+20000808   currentDelay
+2000080c   RUNDELAY
+20000810   running
+20000814   intToChar
+2000081e   valChar
+20000824   motorVelocity
+20000828   _lock
+2000082c   _unlock
+20000830   __TI_cleanup_ptr
+20000834   __TI_dtors_ptr
+20000838   main_func_sp
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+
+[90 symbols]
