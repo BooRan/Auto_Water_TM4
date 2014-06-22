@@ -84,10 +84,10 @@ uint32_t ui32TempValueF;
 uint32_t ui32MoistureAvg;
 
 //				Status, OverrideStatus, Port, Pin, OnHour, OnMinute, OnLength;
-Zone zone0 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTD_BASE, GPIO_PIN_3, 16, 53, 5};
-Zone zone1 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTE_BASE, GPIO_PIN_1, 16, 54, 3};
-Zone zone2 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTE_BASE, GPIO_PIN_2, 16, 59, 3};
-Zone zone3 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTE_BASE, GPIO_PIN_3, 16, 57, 3};
+Zone zone0 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTD_BASE, GPIO_PIN_3, 6, 40, 5};
+Zone zone1 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTE_BASE, GPIO_PIN_1, 15, 25, 3};
+Zone zone2 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTE_BASE, GPIO_PIN_2, 15, 26, 3};
+Zone zone3 = { ZONE_OFF, OVERRIDE_INACTIVE, GPIO_PORTE_BASE, GPIO_PIN_3, 15, 27, 3};
 //Zone zone0 = { .Status = ZONE_OFF, .OverrideStates = OVERRIDE_INACTIVE, .Port = ZONE_D_PORT, .Pin = GPIO_PIN_3, .OnHour = 19, .OnMinute = 12, .OnLength = 1};
 //Zone zone1 = { .Status = ZONE_OFF, .OverrideStates = OVERRIDE_INACTIVE, .Port = ZONE_D_PORT, .Pin = GPIO_PIN_3, .OnHour = 19, .OnMinute = 12, .OnLength = 1};
 //Zone zone2 = { .Status = ZONE_OFF, .OverrideStates = OVERRIDE_INACTIVE, .Port = ZONE_D_PORT, .Pin = GPIO_PIN_3, .OnHour = 19, .OnMinute = 7, .OnLength = 4};
@@ -129,6 +129,7 @@ int main(void)
 			case RUN:
 				statusLed = LED_GREEN_PIN;
 				dateTime = DS1307_GetTime();			// Get the current time
+				//HIH6130_UpdateData();					// Get HIH6130 Data
 				checkZoneStatus();						// Check if status of each zone
 				break;
 			case OVERRIDE:
@@ -223,7 +224,7 @@ void init_Zones(void)
 		// Enable the GPIO port that is used for the zone
 		GPIOPinTypeGPIOOutput(currentZone->Port, currentZone->Pin);
 		// Turn relay off = pin HIGH
-		GPIOPinWrite(currentZone->Port, currentZone->Pin, 0);
+		GPIOPinWrite(currentZone->Port, currentZone->Pin, currentZone->Pin);
 	}
 }
 
@@ -289,7 +290,6 @@ void genTimer1Handler(void)
 	TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
 	checkIntTempSensor();					// Check internal temperature sensor
-	HIH6130_UpdateData();					// Get HIH6130 Data
 	ui32MoistureAvg = AMS_ReadSensor();		// Read the moisture sensor
 	printCurrentStatus();					// Print status to UART
 
@@ -495,7 +495,7 @@ void checkZoneStatus(void)
 
 		// Check if zone should be on
 		if((currentTimeMinutes >= onTimeMinutes) &&
-			(currentTimeMinutes < (onTimeMinutes + (onLengthMinutes * TARGET_REL_HUM/HIH6130_GetHumidity()))))
+			(currentTimeMinutes < (onTimeMinutes + onLengthMinutes)))	//* TARGET_REL_HUM/HIH6130_GetHumidity()
 		{
 			currentZone->Status = ZONE_ON;
 		}
@@ -776,7 +776,6 @@ void delay(uint32_t milliSeconds)
 		counter++;
 	}
 }
-
 
 /*****************************************************
  * 	Function: flashLED

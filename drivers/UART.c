@@ -20,7 +20,7 @@
 
 /*****************************************************
  * 	Function: UART_SetupUART0
- *	Description:
+ *	Description: Setup routine for UART0
  *	Input: None
  *	Output: None
  *****************************************************/
@@ -44,8 +44,10 @@ static void UART_SetupUART0(void)
 
 /*****************************************************
  * 	Function: UART_PrintMessage
- *	Description:
- *	Input: None
+ *	Description: Prints array of characters to UART
+ *	Input: (char) input[] - Array of characters to print
+ *		   (int) count - Number of characters in input
+ *		   (bool) endLine - Should print eol characters
  *	Output: None
  *****************************************************/
 static void UART_PrintMessage(char input[], int count, bool endLine)

@@ -23,7 +23,6 @@ static DateTime DS1307_GetTime(void)
 	DateTime dt;
 	uint32_t response[7];
 	I2C_ReadBytesFromAddress(DS1307_I2C_BASE, DS1307_SLAVE_ADDRESS, 0x00, response, 7);
-
 	dt.second 		= bcdToDec(response[0x00]);
 	dt.minute 		= bcdToDec(response[0x01]);
 	dt.hour	  		= bcdToDec(response[0x02]);
@@ -31,6 +30,7 @@ static DateTime DS1307_GetTime(void)
 	dt.dayOfMonth	= bcdToDec(response[0x04]);
 	dt.month		= bcdToDec(response[0x05]);
 	dt.year			= bcdToDec(response[0x06]);
+
 	return dt;
 }
 

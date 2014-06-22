@@ -15,7 +15,6 @@ $(GEN_CMDS__FLAG) \
 "./drivers/AMS.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "./main.obj" \
-"./InterruptHandlers.obj" \
 "C:/TI/TivaWare_C_Series-2.1.0.12573/driverlib/ccs/Debug/driverlib.lib" \
 "../tm4c123gh6pm.cmd" \
 -l"libc.a" \
@@ -132,8 +131,8 @@ Auto_Water_TM4.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "Auto_Water_TM4.out"
-	-$(RM) "InterruptHandlers.pp" "main.pp" "tm4c123gh6pm_startup_ccs.pp" "drivers\AMS.pp" "drivers\DS1307.pp" "drivers\HIH6130.pp" "drivers\I2C.pp" "drivers\UART.pp" 
-	-$(RM) "InterruptHandlers.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" "drivers\AMS.obj" "drivers\DS1307.obj" "drivers\HIH6130.obj" "drivers\I2C.obj" "drivers\UART.obj" 
+	-$(RM) "main.pp" "tm4c123gh6pm_startup_ccs.pp" "drivers\AMS.pp" "drivers\DS1307.pp" "drivers\HIH6130.pp" "drivers\I2C.pp" "drivers\UART.pp" 
+	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "drivers\AMS.obj" "drivers\DS1307.obj" "drivers\HIH6130.obj" "drivers\I2C.obj" "drivers\UART.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

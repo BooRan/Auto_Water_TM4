@@ -1,1 +1,1 @@
-"./drivers/UART.obj" "./drivers/I2C.obj" "./drivers/HIH6130.obj" "./drivers/DS1307.obj" "./drivers/AMS.obj" "./tm4c123gh6pm_startup_ccs.obj" "./main.obj" "./InterruptHandlers.obj" "C:/TI/TivaWare_C_Series-2.1.0.12573/driverlib/ccs/Debug/driverlib.lib" "../tm4c123gh6pm.cmd" -l"libc.a" 
+"./drivers/UART.obj" "./drivers/I2C.obj" "./drivers/HIH6130.obj" "./drivers/DS1307.obj" "./drivers/AMS.obj" "./tm4c123gh6pm_startup_ccs.obj" "./main.obj" "C:/TI/TivaWare_C_Series-2.1.0.12573/driverlib/ccs/Debug/driverlib.lib" "../tm4c123gh6pm.cmd" -l"libc.a" 
